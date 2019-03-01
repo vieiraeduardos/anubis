@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app.models.Admin import Admin
 
 
-@app.route("/signup/admin/")
+@app.route("/signup/admin/", methods=["POST"])
 def admin_signup():
     cpf = request.form.get("cpf")
     name = request.form.get("name")
@@ -22,7 +22,7 @@ def admin_signup():
 
     if admin.create():
         return redirect("/login/")
-    return render_template("register-page.html")
+    return render_template("pages/register-page.html")
 
 @app.route("/login/admin/", methods=["POST"])
 def admin_login():
