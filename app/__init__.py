@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "@anubis"
 
 from app.controllers import AdminController
-
+from app.controllers import EventController
 
 
 @app.route("/")
