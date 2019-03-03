@@ -9,7 +9,3 @@ def redirect_event_page(code):
     event = Event().getEventByCode(code)
 
     return render_template("admin-events.html", event=event)
-
-@app.route("/events/new/", methods=["GET"])
-def redirect_new_paper():
-    return render_template("new-paper.html")

@@ -8,6 +8,7 @@ from app.controllers import AdminController
 from app.controllers import EventController
 from app.controllers import AuthorController
 from app.controllers import JudgeController
+from app.controllers import PaperController
 
 
 @app.route("/")
