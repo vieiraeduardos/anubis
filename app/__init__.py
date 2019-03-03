@@ -6,6 +6,7 @@ app.config["SECRET_KEY"] = "@anubis"
 
 from app.controllers import AdminController
 from app.controllers import EventController
+from app.controllers import AuthorController
 
 
 @app.route("/")
