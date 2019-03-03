@@ -1,5 +1,5 @@
 from datetime import date
-from flask import request, render_template
+from flask import request, render_template, redirect, session
 
 
 from app import app
@@ -22,21 +22,24 @@ def admin_signup():
 
     if admin.create():
         return redirect("/login/")
-    return render_template("pages/register-page.html")
+    return render_template("register-page.html")
 
 @app.route("/login/admin/", methods=["POST"])
 def admin_login():
     email = request.form.get("email")
     password = request.form.get("password")
 
+    print(email)
+    print(password)
+
     admin = Admin().getAdminByEmail(email)
 
     if admin:
         if check_password_hash(admin["password"], password):
             session["email"] = admin["email"]
-            session["_id"] = admin["_id"]
             session["cpf"] = admin["cpf"]
+            session["type"] = "admin"
             return redirect("/")
 
     error = "E-mail ou senha estão incorretos!"
-    return render_template("pages/login-page.html", error=error)
+    return render_template("login-page.html", error=error)

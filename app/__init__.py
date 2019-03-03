@@ -1,11 +1,19 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 
 app = Flask(__name__)
 
+app.config["SECRET_KEY"] = "@anubis"
+
 from app.controllers import AdminController
+
+
 
 @app.route("/")
 def index():
+    if "cpf" in session:
+        if session["type"] == "admin":
+            return render_template("admin.html")
+        return render_template("judge.html")
     return render_template("index.html")
 
 @app.route("/login/", methods=["GET"])

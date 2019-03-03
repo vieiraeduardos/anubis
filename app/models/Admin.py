@@ -15,7 +15,7 @@ class Admin():
           with self.connection.cursor() as cursor:
             sql = "INSERT INTO admins(cpf, name, email, password, createdAt, modifiedAt) VALUES (%s, %s, %s, %s, %s, %s)"
             cursor.execute(sql, (self.cpf, self.name, self.email, self.password, self.createdAt, self.modifiedAt))
-            cursor.commit()
+            self.connection.commit()
 
             return True
         except Exception as e:
