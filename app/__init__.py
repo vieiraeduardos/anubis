@@ -14,4 +14,4 @@ def redirect_login():
 
 @app.route("/signup/", methods=["GET"])
 def redirect_signup():
-    return render_template("pages/register-page.html")
+    return render_template("register-page.html")
