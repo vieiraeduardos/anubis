@@ -10,7 +10,7 @@ def index():
 
 @app.route("/login/", methods=["GET"])
 def redirect_login():
-    return render_template("pages/login-page.html")
+    return render_template("login-page.html")
 
 @app.route("/signup/", methods=["GET"])
 def redirect_signup():
