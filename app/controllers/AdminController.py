@@ -1,7 +1,5 @@
 from datetime import date
 from flask import request, render_template, redirect, session
-
-
 from app import app
 from werkzeug.security import generate_password_hash, check_password_hash
 
