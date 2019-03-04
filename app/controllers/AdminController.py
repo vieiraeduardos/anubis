@@ -27,9 +27,6 @@ def admin_login():
     email = request.form.get("email")
     password = request.form.get("password")
 
-    print(email)
-    print(password)
-
     admin = Admin().getAdminByEmail(email)
 
     if admin:
@@ -40,4 +37,4 @@ def admin_login():
             return redirect("/")
 
     error = "E-mail ou senha estão incorretos!"
-    return render_template("login-page.html", error=error)
+    return render_template("login-page-admin.html", error=error)
