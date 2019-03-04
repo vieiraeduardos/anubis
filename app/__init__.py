@@ -25,7 +25,7 @@ def redirect_login_admin():
 
 @app.route("/login/judge/", methods=["GET"])
 def redirect_login_judge():
-    return render_template("redirect_login_judge.html")
+    return render_template("login-page-judge.html")
 
 @app.route("/signup/", methods=["GET"])
 def redirect_signup():
