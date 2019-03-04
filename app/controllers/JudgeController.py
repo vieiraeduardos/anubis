@@ -8,7 +8,25 @@ from app import app
 
 from app.models.Judge import Judge
 
-@app.route("/jauthorsudges/new/", methods=["GET"])
+@app.route("/login/judge/", methods=["POST"])
+def judge_login():
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    judge = Judge().getJudgeByEmail(email)
+
+    if judge:
+        if check_password_hash(judge["password"], password):
+            session["email"] = judge["email"]
+            session["cpf"] = judge["cpf"]
+            session["type"] = "judge"
+            return redirect("/")
+
+    error = "E-mail ou senha estão incorretos!"
+    return render_template("login-page-judge.html", error=error)
+
+
+@app.route("/judges/new/", methods=["GET"])
 def redirect_new_judge():
     return render_template("new-judge.html")
 
