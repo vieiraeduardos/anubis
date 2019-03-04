@@ -19,9 +19,13 @@ def index():
         return render_template("judge.html")
     return render_template("index.html")
 
-@app.route("/login/", methods=["GET"])
-def redirect_login():
-    return render_template("login-page.html")
+@app.route("/login/admin/", methods=["GET"])
+def redirect_login_admin():
+    return render_template("login-page-admin.html")
+
+@app.route("/login/judge/", methods=["GET"])
+def redirect_login_judge():
+    return render_template("redirect_login_judge.html")
 
 @app.route("/signup/", methods=["GET"])
 def redirect_signup():
