@@ -9,6 +9,7 @@ from app.controllers import EventController
 from app.controllers import AuthorController
 from app.controllers import JudgeController
 from app.controllers import PaperController
+from app.controllers import EvaluationController
 
 @app.route("/logout/")
 def logout():

@@ -1,0 +1,86 @@
+{% include "heading.html"%}
+
+<body class="landing-page">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="/" rel="tooltip" title="Designed and Coded by Núcleo de Telessaúde do Maranhão" data-placement="bottom" target="_blank">
+          <span>Anúbis•</span> Sistema de Avaliação
+        </a>
+        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a>
+                Anúbis•
+              </a>
+            </div>
+            <div class="col-6 collapse-close text-right">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav">
+          <!--<li class="nav-item">
+            <a class="nav-link" href="../events.html">Eventos</a>
+          </li>-->
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="wrapper">
+    <div class="page-header">
+      <img src="{{ url_for('static', filename='assets/img/blob.png') }}" class="path">
+      <img src="{{ url_for('static', filename='assets/img/path2.png') }}" class="path2">
+      <img src="{{ url_for('static', filename='assets/img/triunghiuri.png') }}" class="shapes triangle">
+      <img src="{{ url_for('static', filename='assets/img/waves.png') }}" class="shapes wave">
+      <img src="{{ url_for('static', filename='assets/img/patrat.png') }}" class="shapes squares">
+      <img src="{{ url_for('static', filename='assets/img/cercuri.png') }}" class="shapes circle">
+    <div class="content">
+        <div class="container">
+          <div class="row row-grid justify-content-between  text-left">
+            <div class="col-lg-12 col-sm-12 px-2 py-2"></div>
+
+            <div class="col-lg-12 col-sm-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">{{ event.name }}</h4>
+                    <p class="card-text">{{ event.description }}</p>
+                  </div>
+                </div>
+
+                <h4>Lista de Trabalhos</h4>
+
+                {% if papers %}
+                  {% for paper in papers %}
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">Título do Projeto: {{ paper.title }}</h4>
+                        <p>{{ paper.abstract }}</p>
+                        <a href="/papers/{{ paper.code }}/evaluations/" class="btn btn-info"><i class="tim-icons icon-check-2"></i></a>
+
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+{% include "footer.html" %}

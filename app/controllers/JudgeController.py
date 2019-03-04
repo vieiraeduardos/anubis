@@ -7,6 +7,16 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import app
 
 from app.models.Judge import Judge
+from app.models.Event import Event
+from app.models.Paper import Paper
+
+@app.route("/judges/events/<code>/", methods=["GET"])
+def redirect_to_judge_event(code):
+    event = Event().getEventByCode(code)
+    papers = Paper().getAllPapers()
+
+    return render_template("judge-events.html", event=event, papers=papers)
+
 
 @app.route("/login/judge/", methods=["POST"])
 def judge_login():
