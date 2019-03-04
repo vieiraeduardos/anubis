@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, redirect
 
 app = Flask(__name__)
 
@@ -10,7 +10,10 @@ from app.controllers import AuthorController
 from app.controllers import JudgeController
 from app.controllers import PaperController
 
-from app.models.Paper import Paper
+@app.route("/logout/")
+def logout():
+    session.pop("cpf", "")
+    return redirect("/")
 
 @app.route("/")
 def index():
