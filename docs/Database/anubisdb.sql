@@ -34,19 +34,18 @@ CREATE TABLE authors(
 CREATE TABLE papers (
 	code INTEGER AUTO_INCREMENT PRIMARY KEY,
 	title VARCHAR(255) NOT NULL,
-	author INTEGER NOT NULL,
+	abstract VARCHAR(500) NOT NULL,
+	author VARCHAR(13) NOT NULL,
 	category INTEGER NOT NULL,
 	subcategory INTEGER NOT NULL,
 	isExposed BOOLEAN NOT NULL,
 	isPresented BOOLEAN NOT NULL,
-	judge INTEGER NOT NULL,
 	createdAt DATE NOT NULL,
 	modifiedAt DATE NOT NULL,
 
 	FOREIGN KEY(author) REFERENCES authors(cpf),
 	FOREIGN KEY(category) REFERENCES categories(code),
-	FOREIGN KEY(subcategory) REFERENCES subcategories(code),
-	FOREIGN KEY(judge) REFERENCES judges(cpf)
+	FOREIGN KEY(subcategory) REFERENCES subcategories(code)
 
 );
 
@@ -60,24 +59,24 @@ CREATE TABLE categories(
 );
 
 
-INSERT INTO categories(name) VALUES ("Teleeducação");
-INSERT INTO categories(name) VALUES ("Teleassistência");
-INSERT INTO categories(name) VALUES ("Tecnologia da Informação e Comunicação");
+INSERT INTO categories(name, createdAt, modifiedAt) VALUES ("Teleeducação", "2019-03-03", "2019-03-03");
+INSERT INTO categories(name, createdAt, modifiedAt) VALUES ("Teleassistência", "2019-03-03", "2019-03-03");
+INSERT INTO categories(name, createdAt, modifiedAt) VALUES ("Tecnologias da Informação e Comunicação", "2019-03-03", "2019-03-03");
 
 CREATE TABLE subcategories(
 	code INTEGER AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(255) NOT NULL,
 	category INTEGER NOT NULL,
 	createdAt DATE NOT NULL,
-	modifiedAt DATE NOT NULL
+	modifiedAt DATE NOT NULL,
 
-	FOREIGN KEY(author) REFERENCES authors(cpf)
+	FOREIGN KEY(category) REFERENCES categories(code)
 );
 
-INSERT INTO subcategories(name, category) VALUES ("TICs na Promoção e Prevenção à Saúde", 3);
-INSERT INTO subcategories(name, category) VALUES ("TICs na Educação Médica e das Profissões da Saúde", 3);
-INSERT INTO subcategories(name, category) VALUES ("TICs na Vigilância em Saúde", 3);
-INSERT INTO subcategories(name, category) VALUES ("Tecnologias disruptivas em Saúde", 3);
-INSERT INTO subcategories(name, category) VALUES ("Teleassistência / Telecuidado", 2);
-INSERT INTO subcategories(name, category) VALUES ("Telemedicina e Telessaúde aplicadas à Gestão na Saúde", 2);
-INSERT INTO subcategories(name, category) VALUES ("Legislação e Normas em Telemedicina, Telessaúde e Saúde Digital", 1);
+INSERT INTO subcategories(name, category, createdAt, modifiedAt) VALUES ("TICs na Promoção e Prevenção à Saúde", 3, "2019-03-03", "2019-03-03");
+INSERT INTO subcategories(name, category, createdAt, modifiedAt) VALUES ("TICs na Educação Médica e das Profissões da Saúde", 3, "2019-03-03", "2019-03-03");
+INSERT INTO subcategories(name, category, createdAt, modifiedAt) VALUES ("TICs na Vigilância em Saúde", 3, "2019-03-03", "2019-03-03");
+INSERT INTO subcategories(name, category, createdAt, modifiedAt) VALUES ("Tecnologias disruptivas em Saúde", 3, "2019-03-03", "2019-03-03");
+INSERT INTO subcategories(name, category, createdAt, modifiedAt) VALUES ("Teleassistência / Telecuidado", 2, "2019-03-03", "2019-03-03");
+INSERT INTO subcategories(name, category, createdAt, modifiedAt) VALUES ("Telemedicina e Telessaúde aplicadas à Gestão na Saúde", 2, "2019-03-03", "2019-03-03");
+INSERT INTO subcategories(name, category, createdAt, modifiedAt) VALUES ("Legislação e Normas em Telemedicina, Telessaúde e Saúde Digital", 1, "2019-03-03", "2019-03-03");
