@@ -71,23 +71,19 @@
 
                 <h4>Lista de Trabalhos</h4>
 
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Título do Projeto: O uso de uma arquitetura orientada a serviços para construção de um ambiente virtual de registro de associados.</h4>
-                    <a href="../avaliador-evento.html" class="btn btn-primary">Editar</a>
-                    <a href="../avaliador-evento.html" class="btn btn-primary">Remover</a>
+                {% if papers %}
+                  {% for paper in papers %}
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">Título do Projeto: {{ paper.title }}</h4>
+                        <p>{{ paper.abstract }}</p>
+                        <a href="" class="btn btn-primary">Editar</a>
+                        <a href="" class="btn btn-primary">Remover</a>
 
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Título do Projeto: O uso de uma arquitetura orientada a serviços para construção de um ambiente virtual de registro de associados.</h4>
-                    <a href="../avaliador-evento.html" class="btn btn-primary">Editar</a>
-                    <a href="../avaliador-evento.html" class="btn btn-primary">Remover</a>
-
-                  </div>
-                </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% endif %}
             </div>
 
           </div>

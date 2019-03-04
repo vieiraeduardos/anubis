@@ -10,6 +10,7 @@ from app.controllers import AuthorController
 from app.controllers import JudgeController
 from app.controllers import PaperController
 
+from app.models.Paper import Paper
 
 @app.route("/")
 def index():
