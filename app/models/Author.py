@@ -22,3 +22,17 @@ class Author():
             return False
         finally:
           self.connection.close()
+
+    def getAllAuthors(self):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "SELECT  *  FROM  authors"
+            cursor.execute(sql)
+            result = cursor.fetchall()
+
+            return result
+        except Exception as e:
+            print(e)
+            return None
+        finally:
+          self.connection.close()
