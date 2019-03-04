@@ -23,3 +23,17 @@ class Judge():
             return False
         finally:
           self.connection.close()
+
+    def getJudgeByEmail(self, email):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "SELECT  *  FROM  judges  WHERE  email=%s"
+            cursor.execute(sql, (email))
+            result = cursor.fetchone()
+
+            return result
+        except Exception as e:
+            print(e)
+            return None
+        finally:
+          self.connection.close()
