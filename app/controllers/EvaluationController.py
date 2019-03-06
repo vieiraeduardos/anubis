@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request
+from flask import redirect, render_template, request, session
 
 from app import app
 
