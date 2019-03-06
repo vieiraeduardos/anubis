@@ -11,8 +11,8 @@ def redirect_processing(code):
     papers = Paper().getAllPapers()
 
     for paper in papers:
-        note = Evaluation().getNoteByPaper(paper.code)
-        paper.update({"note": note})
+        note = Evaluation().getNoteByPaper(paper["code"])
+        paper.update({"note": note["total"] })
 
     return render_template("processing.html", papers=papers)
 

@@ -26,3 +26,17 @@ class Evaluation():
             return False
         finally:
           self.connection.close()
+
+    def getNoteByPaper(self, paper):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "SELECT avg(originality) + avg(consistency) + avg(clarity) + avg(relevance) + avg(quality) + avg(domain) as total FROM anubisdb.evaluation where evaluation.paper=%s"
+            cursor.execute(sql, (paper))
+            result = cursor.fetchone()
+
+            return result
+        except Exception as e:
+            print(e)
+            return 0
+        finally:
+          self.connection.close()
