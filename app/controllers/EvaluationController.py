@@ -3,6 +3,8 @@ from flask import redirect, render_template, request, session
 from app import app
 
 from app.models.Evaluation import Evaluation
+from app.models.Paper import Paper
+
 
 @app.route("/papers/<code>/evaluations/", methods=["GET"])
 def redirect_evaluation_page(code):
