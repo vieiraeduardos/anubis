@@ -6,7 +6,9 @@ from app.models.Evaluation import Evaluation
 
 @app.route("/papers/<code>/evaluations/", methods=["GET"])
 def redirect_evaluation_page(code):
-    return render_template("new-evaluation.html", code=code)
+    paper = Paper().getPaperByCode(code)
+
+    return render_template("new-evaluation.html", code=code, paper=paper)
 
 @app.route("/papers/<paper>/evaluations/", methods=["POST"])
 def evaluate(paper):
