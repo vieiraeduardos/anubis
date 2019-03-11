@@ -42,228 +42,99 @@
   </nav>
   <!-- End Navbar -->
   <div class="wrapper">
-    <div class="page-header">
-      <img src="{{ url_for('static', filename='assets/img/blob.png') }}" class="path">
-      <img src="{{ url_for('static', filename='assets/img/path2.png') }}" class="path2">
-      <img src="{{ url_for('static', filename='assets/img/triunghiuri.png') }}" class="shapes triangle">
-      <img src="{{ url_for('static', filename='assets/img/waves.png') }}" class="shapes wave">
-      <img src="{{ url_for('static', filename='assets/img/patrat.png') }}" class="shapes squares">
-      <img src="{{ url_for('static', filename='assets/img/cercuri.png') }}" class="shapes circle">
-      <div class="content">
-        <div class="container">
+    <div class="section">
+      <div class="container">
           <h3>Painel do Avaliador - Nova Avaliação</h3>
 
-            <div class="row">
-              <div class="col-lg-8 col-md-8 offset-lg-2 offset-md-2">
+          <div class="row justify-content-between">
 
-                <div class="card card-register">
-                  <div class="card-body">
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <p style="font-weight: bold; font-size: 18px; text-transform: uppercase;">{{ paper.title }}</p>
 
-                <table class="table">
-                  <thead>
-                      <tr>
-                          <th class="text-center" style="font-size: 18px;">Critério</th>
-                          <th class="text-center" style="font-size: 18px;">Nota</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td style="font-weight: bold; font-size: 18px;">Originalidade e caráter inovador</td>
-                          <td>
-                            <input min="0" max="10" step="1" name="originality" type="number" class="form-control text-center" placeholder="Nota" style="background-color: white; font-size: 18px;">
-                          </td>
+                </div>
+                <div class="card card-register" style="background-color: white;">
+                  <div class="card-body" style>
+                    <p style="color: black;">{{ paper.abstract }}</p>
 
-                      </tr>
-                      <tr>
-                          <td style="font-weight: bold; font-size: 18px;">Consistência e rigor na abordagem teórico-metodológica</td>
-                          <td>
-                            <input min="0" max="10" step="1" name="consistency" type="number" class="form-control text-center" placeholder="Nota" style="background-color: white; font-size: 18px;">
-                          </td>
-
-                      </tr>
-                      <tr>
-                          <td style="font-weight: bold; font-size: 18px;">Clareza dos resultados alcançados</td>
-                          <td>
-                            <input min="0" max="10" step="1" name="clarity" type="number" class="form-control text-center" placeholder="Nota" style="background-color: white; font-size: 18px;">
-                          </td>
-
-                      </tr>
-
-                      <tr>
-                          <td style="font-weight: bold; font-size: 18px;">Relevância para a área</td>
-                          <td>
-                            <input min="0" max="10" step="1" name="relevance" type="number" class="form-control text-center" placeholder="Nota" style="background-color: white; font-size: 18px;">
-                          </td>
-
-                      </tr>
-
-                      <tr>
-                          <td style="font-weight: bold; font-size: 18px;">Qualidade visual da apresentação/pôster</td>
-                          <td>
-                            <input min="0" max="10" step="1" name="quality" type="number" class="form-control text-center" placeholder="Nota" style="background-color: white; font-size: 18px;">
-                          </td>
-
-                      </tr>
-
-                      <tr>
-                          <td style="font-weight: bold; font-size: 18px;">Domínio do assunto</td>
-                          <td>
-                            <input min="0" max="10" step="1" name="domain" type="number" class="form-control text-center" placeholder="Nota" style="background-color: white; font-size: 18px;">
-                          </td>
-
-                      </tr>
-                  </tbody>
-              </table>
-
-              <button type="submit" class="btn btn-info btn-round btn-lg">Salvar</button>
-
-              </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-
-<!--
-
-                <div class="card card-register">
-                  <div class="card-header">
-                    <img class="card-img" src="{{ url_for('static', filename='assets/img/square1.png') }}" alt="Card image">
-                    <h4 class="card-title">Nova Avaliação</h4>
-                  </div>
-                  <div class="card-body">
-                    <form class="form" action="/papers/{{ code }}/evaluations/" method="POST">
-
-                      <label style="font-weight: bold;">Originalidade</label>
-
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="tim-icons icon-notes"></i>
-                          </div>
-                        </div>
-                        <input min="0" max="10" step="1" name="originality" type="number" class="form-control" placeholder="Originalidade">
-                      </div>
-
-                      <label style="font-weight: bold;">Consistência</label>
-
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="tim-icons icon-notes"></i>
-                          </div>
-                        </div>
-                        <input min="0" max="10" step="1" name="consistency" type="number" class="form-control" placeholder="Consistência">
-                      </div>
-
-                      <label style="font-weight: bold;">Clareza</label>
-
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="tim-icons icon-notes"></i>
-                          </div>
-                        </div>
-                        <input min="0" max="10" step="1" name="clarity" type="number" class="form-control" placeholder="Clareza">
-                      </div>
-
-                      <label style="font-weight: bold;">Relevância</label>
-
-
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="tim-icons icon-notes"></i>
-                          </div>
-                        </div>
-                        <input min="0" max="10" step="1" name="relevance" type="number" class="form-control" placeholder="Relevância">
-                      </div>
-
-                      <label style="font-weight: bold;">Qualidade</label>
-
-
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="tim-icons icon-notes"></i>
-                          </div>
-                        </div>
-                        <input min="0" max="10" step="1" name="quality" type="number" class="form-control" placeholder="Qualidade">
-                      </div>
-
-                      <label style="font-weight: bold;">Domínio</label>
-
-
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="tim-icons icon-notes"></i>
-                          </div>
-                        </div>
-                        <input min="0" max="10" step="1" name="domain" type="number" class="form-control" placeholder="Domínio">
-                      </div>
-
-
-                      <div class="card-footer">
-                        <button type="submit" class="btn btn-info btn-round btn-lg">Salvar</button>
-                      </div>
-
-                    </form>
                   </div>
                 </div>
               </div>
-            </div>-->
-<!--
-          <div class="row row-grid justify-content-between  text-left">
 
-            <div class="col-lg-12 col-sm-12">
-                <form action="/papers/{{ code }}/evaluations/" method="POST">
-                  <label for="">Originalidade</label>
-                  <div class="input-group">
+            </div> <!-- end .col -->
 
-                    <input min="0" max="10" step="1" name="originality" type="number" class="form-control" style="color: black; background-color: white;">
-                  </div>
-                  <label for="">Consistência</label>
-                  <div class="input-group">
+            <div class="col-lg-6 col-md-12">
 
-                    <input min="0" max="10" step="1" name="consistency" type="number" class="form-control" style="color: black; background-color: white;">
-                  </div>
+              <div class="card card-register">
+                <div class="card-body">
 
-                  <label for="">Clareza</label>
-                  <div class="input-group">
+              <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center" style="font-size: 18px;">Critério</th>
+                        <th class="text-center" style="font-size: 18px;">Nota</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: bold; font-size: 18px;">Originalidade e caráter inovador</td>
+                        <td>
+                          <input min="0" max="10" step="1" name="originality" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                        </td>
 
-                    <input min="0" max="10" step="1" name="clarity" type="number" class="form-control" style="color: black; background-color: white;">
-                  </div>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; font-size: 18px;">Consistência e rigor na abordagem teórico-metodológica</td>
+                        <td>
+                          <input min="0" max="10" step="1" name="consistency" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                        </td>
 
-                  <label for="">Relevância</label>
-                  <div class="input-group">
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; font-size: 18px;">Clareza dos resultados alcançados</td>
+                        <td>
+                          <input min="0" max="10" step="1" name="clarity" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                        </td>
 
-                    <input min="0" max="10" step="1" name="relevance" type="number" class="form-control" style="color: black; background-color: white;">
-                  </div>
+                    </tr>
 
-                  <label for="">Qualidade</label>
-                  <div class="input-group">
+                    <tr>
+                        <td style="font-weight: bold; font-size: 18px;">Relevância para a área</td>
+                        <td>
+                          <input min="0" max="10" step="1" name="relevance" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                        </td>
 
-                    <input min="0" max="10" step="1" name="quality" type="number" class="form-control" style="color: black; background-color: white;">
-                  </div>
+                    </tr>
 
-                  <label for="">Domínio</label>
-                  <div class="input-group">
+                    <tr>
+                        <td style="font-weight: bold; font-size: 18px;">Qualidade visual da apresentação/pôster</td>
+                        <td>
+                          <input min="0" max="10" step="1" name="quality" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                        </td>
 
-                    <input min="0" max="10" step="1" name="domain" type="number" class="form-control" style="color: black; background-color: white;">
-                  </div>
+                    </tr>
 
-                  <button type="sCadastrarubmit" class="btn btn-info btn-round btn-lg">Salvar</button>
-                </form>
+                    <tr>
+                        <td style="font-weight: bold; font-size: 18px;">Domínio do assunto</td>
+                        <td>
+                          <input min="0" max="10" step="1" name="domain" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-info btn-round btn-lg">Salvar</button>
+
+            </div>
             </div>
 
-          </div> -->
+          </div> <!-- end .col -->
 
+
+          </div>
+        </div>
+      </div>
 
 {% include "footer.html" %}
