@@ -55,63 +55,53 @@
   </nav>
   <!-- End Navbar -->
   <div class="wrapper">
-    <div class="page-header">
-      <img src="{{ url_for('static', filename='assets/img/blob.png') }}" class="path">
-      <img src="{{ url_for('static', filename='assets/img/path2.png') }}" class="path2">
-      <img src="{{ url_for('static', filename='assets/img/triunghiuri.png') }}" class="shapes triangle">
-      <img src="{{ url_for('static', filename='assets/img/waves.png') }}" class="shapes wave">
-      <img src="{{ url_for('static', filename='assets/img/patrat.png') }}" class="shapes squares">
-      <img src="{{ url_for('static', filename='assets/img/cercuri.png') }}" class="shapes circle">
-    <div class="content">
-        <div class="container">
-          <div class="row row-grid justify-content-between  text-left">
-            <div class="col-lg-12 col-sm-12 px-2 py-2"></div>
 
-            <div class="col-lg-12 col-sm-12">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">{{ event.name }}</h4>
-                    <p class="card-text">{{ event.description }}</p>
-                  </div>
-                </div>
 
-                <h4>Lista de Trabalhos</h4>
+    <div class="section">
+      <div class="container">
+        <div class="row justify-content-between">
 
-                {% if papers %}
-                  {% for paper in papers %}
-
-                    <div class="card card-register">
-
-                      <div class="card-body">
-
-                          <div class="input-group">
-                            <h4 class="card-title">Título do Projeto: {{ paper.title }}</h4>
-
-                          </div>
-
-                          <div class="input-group">
-                            <p class="card-text">{{ paper.abstract }}</p>
-
-                          </div>
-
-                          <div class="input-group">
-                            <a href="" class="btn btn-info"><i class="tim-icons icon-pencil"></i></a>
-                            <a href="" class="btn btn-danger"><i class="tim-icons icon-trash-simple"></i></a>
-
-                          </div>
-
-                      </div>
-
-                    </div> <!-- end .card -->
-                  {% endfor %}
-                {% endif %}
-            </div>
+          <div class="col-md-12">
+            <h1 class="profile-title text-left">{{ CBTMS }}</h1>
+            <p class="profile-description text-left">CBTMS - {{ event.description }}</p>
 
           </div>
 
+          <div class="col-md-12">
+            <h1 class="profile-title text-left">Trabalhos Submetidos</h1>
+            {% if papers %}
+              {% for paper in papers %}
+
+                <div class="card card-register">
+
+                  <div class="card-body">
+
+                      <div class="input-group">
+                        <h4 class="card-title">Título do Projeto: {{ paper.title }}</h4>
+
+                      </div>
+
+                      <div class="input-group">
+                        <p class="card-text">{{ paper.abstract }}</p>
+
+                      </div>
+
+                      <div class="input-group">
+                        <a href="" class="btn btn-info"><i class="tim-icons icon-pencil"></i></a>
+                        <a href="" class="btn btn-danger"><i class="tim-icons icon-trash-simple"></i></a>
+
+                      </div>
+
+                  </div>
+
+                </div> <!-- end .card -->
+              {% endfor %}
+            {% endif %}
+
+
+          </div>
         </div>
       </div>
     </div>
-
 
 {% include "footer.html" %}
