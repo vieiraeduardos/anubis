@@ -17,8 +17,11 @@ def create_author():
     isStudent = 1 if request.form.get("isStudent") == "1" else 0
     createdAt = str(date.today())
     modifiedAt = str(date.today())
+    email = request.form.get("email")
 
-    author = Author(name=name, cpf=cpf, isStudent=isStudent, createdAt=createdAt, modifiedAt=modifiedAt)
+    print(email)
+
+    author = Author(email=email, name=name, cpf=cpf, isStudent=isStudent, createdAt=createdAt, modifiedAt=modifiedAt)
 
     author.create()
 
