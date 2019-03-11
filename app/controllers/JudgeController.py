@@ -12,10 +12,11 @@ from app.models.Paper import Paper
 
 @app.route("/judges/events/<code>/", methods=["GET"])
 def redirect_to_judge_event(code):
+    user = Judge().getJudgeByEmail(session["email"])
     event = Event().getEventByCode(code)
     papers = Paper().getAllPapers()
 
-    return render_template("judge-events.html", event=event, papers=papers)
+    return render_template("judge-events.html", user=user, event=event, papers=papers)
 
 
 @app.route("/login/judge/", methods=["POST"])
