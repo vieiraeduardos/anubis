@@ -1,9 +1,10 @@
 from app.models.DatabaseFactory import DatabaseFactory
 
 class Author():
-    def __init__(self, name="", cpf="", isStudent=0, createdAt="", modifiedAt=""):
+    def __init__(self, email="", name="", cpf="", isStudent=0, createdAt="", modifiedAt=""):
         self.name = name
         self.cpf = cpf
+        self.email = email
         self.isStudent = isStudent
         self.createdAt = createdAt
         self.modifiedAt = modifiedAt
@@ -12,8 +13,8 @@ class Author():
     def create(self):
         try:
           with self.connection.cursor() as cursor:
-            sql = "INSERT INTO authors(cpf, name, isStudent, createdAt, modifiedAt) VALUES (%s, %s, %s, %s, %s)"
-            cursor.execute(sql, (self.cpf, self.name, self.isStudent, self.createdAt, self.modifiedAt))
+            sql = "INSERT INTO authors(email, cpf, name, isStudent, createdAt, modifiedAt) VALUES (%s, %s, %s, %s, %s, %s)"
+            cursor.execute(sql, (self.email, self.cpf, self.name, self.isStudent, self.createdAt, self.modifiedAt))
             self.connection.commit()
 
             return True
