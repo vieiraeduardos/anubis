@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <title>
-    Blk• Design System by Creative Tim
-  </title>
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
-  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-  <!-- Nucleo Icons -->
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link href="../assets/css/blk-design-system.css?v=1.0.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
-</head>
+{% include "heading.html" %}
 
 <body class="profile-page">
   <!-- Navbar -->
@@ -85,45 +65,44 @@
       <img src="../assets/img/path4.png" class="path">
       <div class="container align-items-center">
         <div class="row">
-          <div class="col-lg-6 col-md-6">
-            <h1 class="profile-title text-left">Mike Scheinder</h1>
-            <h5 class="text-on-back">01</h5>
-            <p class="profile-description">Offices parties lasting outward nothing age few resolve. Impression to discretion understood to we interested he excellence. Him remarkably use projection collecting. Going about eat forty world has round miles.</p>
-            <div class="btn-wrapper profile pt-3">
-              <a target="_blank" href="https://twitter.com/creativetim" class="btn btn-icon btn-twitter btn-round" data-toggle="tooltip" data-original-title="Follow us">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a target="_blank" href="https://www.facebook.com/creativetim" class="btn btn-icon btn-facebook btn-round" data-toggle="tooltip" data-original-title="Like us">
-                <i class="fab fa-facebook-square"></i>
-              </a>
-              <a target="_blank" href="https://dribbble.com/creativetim" class="btn btn-icon btn-dribbble  btn-round" data-toggle="tooltip" data-original-title="Follow us">
-                <i class="fab fa-dribbble"></i>
-              </a>
-            </div>
+          <div class="col-lg-12 col-md-12">
+            {% if papers %}
+              {% for paper in papers %}
+
+                <div class="card card-register">
+
+                  <div class="card-body">
+
+                      <div class="input-group">
+                        <h4 class="card-title">Título do Projeto: {{ paper.title }}</h4>
+
+                      </div>
+
+                      <div class="input-group">
+                        <p class="card-text">{{ paper.abstract }}</p>
+
+                      </div>
+
+                      <div class="input-group">
+                        <a href="" class="btn btn-info"><i class="tim-icons icon-pencil"></i></a>
+                        <a href="" class="btn btn-danger"><i class="tim-icons icon-trash-simple"></i></a>
+
+                      </div>
+
+                  </div>
+
+                </div> <!-- end .card -->
+              {% endfor %}
+            {% endif %}
           </div>
           <div class="col-lg-4 col-md-6 ml-auto mr-auto">
             <div class="card card-coin card-plain">
-              <div class="card-header">
-                <img src="../assets/img/mike.jpg" class="img-center img-fluid rounded-circle">
-                <h4 class="title">Transactions</h4>
-              </div>
+
               <div class="card-body">
                 <ul class="nav nav-tabs nav-tabs-primary justify-content-center">
+
                   <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#linka">
-                      Wallet
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#linkb">
-                      Send
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#linkc">
-                      News
-                    </a>
-                  </li>
+
                 </ul>
                 <div class="tab-content tab-subcategories">
                   <div class="tab-pane active" id="linka">
@@ -180,26 +159,7 @@
                       </table>
                     </div>
                   </div>
-                  <div class="tab-pane" id="linkb">
-                    <div class="row">
-                      <label class="col-sm-3 col-form-label">Pay to</label>
-                      <div class="col-sm-9">
-                        <div class="form-group">
-                          <input type="text" class="form-control" placeholder="e.g. 1Nasd92348hU984353hfid">
-                          <span class="form-text">Please enter a valid address.</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <label class="col-sm-3 col-form-label">Amount</label>
-                      <div class="col-sm-9">
-                        <div class="form-group">
-                          <input type="text" class="form-control" placeholder="1.587">
-                        </div>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-simple btn-primary btn-icon btn-round float-right"><i class="tim-icons icon-send"></i></button>
-                  </div>
+
                   <div class="tab-pane" id="linkc">
                     <div class="table-responsive">
                       <table class="table tablesorter " id="plain-table">
@@ -237,6 +197,7 @@
         </div>
       </div>
     </div>
+
     <div class="section">
       <div class="container">
         <div class="row justify-content-between">
