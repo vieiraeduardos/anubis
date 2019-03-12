@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, session
 
 from datetime import date
 
@@ -8,6 +8,14 @@ from app.models.Author import Author
 from app.models.Category import Category
 from app.models.Subcategory import Subcategory
 from app.models.Paper import Paper
+from app.models.Admin import Admin
+
+@app.route("/papers/<code>/", methods=["GET"])
+def redirect_edit_paper(code):
+    paper = Paper().getPaperByCode(code)
+    user = Admin().getAdminByEmail(session["email"])
+
+    return render_template("edit-paper.html", paper=paper, user=user)
 
 @app.route("/papers/new/", methods=["GET"])
 def redirect_new_paper():

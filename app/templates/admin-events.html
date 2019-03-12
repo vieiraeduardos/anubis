@@ -62,13 +62,12 @@
         <div class="row justify-content-between">
 
           <div class="col-md-12">
-            <h1 class="profile-title text-left">{{ CBTMS }}</h1>
             <p class="profile-description text-left">CBTMS - {{ event.description }}</p>
 
           </div>
 
           <div class="col-md-12">
-            <h1 class="profile-title text-left">Trabalhos Submetidos</h1>
+            <h1 class="profile-title text-left">CBTms</h1>
             {% if papers %}
               {% for paper in papers %}
 
@@ -81,13 +80,10 @@
 
                       </div>
 
-                      <div class="input-group">
-                        <p class="card-text">{{ paper.abstract }}</p>
 
-                      </div>
 
                       <div class="input-group">
-                        <a href="" class="btn btn-info"><i class="tim-icons icon-pencil"></i></a>
+                        <a href="/papers/{{ paper.code }}/" class="btn btn-info"><i class="tim-icons icon-pencil"></i></a>
                         <a href="" class="btn btn-danger"><i class="tim-icons icon-trash-simple"></i></a>
 
                       </div>
