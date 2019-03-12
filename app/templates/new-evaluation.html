@@ -66,71 +66,73 @@
 
             <div class="col-lg-6 col-md-12">
 
-              <div class="card card-register">
-                <div class="card-body">
+              <form action="/papers/{{paper.code}}/evaluations/" method="POST">
+                <div class="card card-register">
+                  <div class="card-body">
 
-              <table class="table">
-                <thead>
-                    <tr>
-                        <th class="text-center" style="font-size: 18px;">Critério</th>
-                        <th class="text-center" style="font-size: 18px;">Nota</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="font-weight: bold; font-size: 18px;">Originalidade e caráter inovador</td>
-                        <td>
-                          <input min="0" max="10" step="1" name="originality" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
-                        </td>
+                <table class="table">
+                  <thead>
+                      <tr>
+                          <th class="text-center" style="font-size: 18px;">Critério</th>
+                          <th class="text-center" style="font-size: 18px;">Nota</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td style="font-weight: bold; font-size: 18px;">Originalidade e caráter inovador</td>
+                          <td>
+                            <input min="0" max="10" step="1" name="originality" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                          </td>
 
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold; font-size: 18px;">Consistência e rigor na abordagem teórico-metodológica</td>
-                        <td>
-                          <input min="0" max="10" step="1" name="consistency" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
-                        </td>
+                      </tr>
+                      <tr>
+                          <td style="font-weight: bold; font-size: 18px;">Consistência e rigor na abordagem teórico-metodológica</td>
+                          <td>
+                            <input min="0" max="10" step="1" name="consistency" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                          </td>
 
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold; font-size: 18px;">Clareza dos resultados alcançados</td>
-                        <td>
-                          <input min="0" max="10" step="1" name="clarity" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
-                        </td>
+                      </tr>
+                      <tr>
+                          <td style="font-weight: bold; font-size: 18px;">Clareza dos resultados alcançados</td>
+                          <td>
+                            <input min="0" max="10" step="1" name="clarity" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                          </td>
 
-                    </tr>
+                      </tr>
 
-                    <tr>
-                        <td style="font-weight: bold; font-size: 18px;">Relevância para a área</td>
-                        <td>
-                          <input min="0" max="10" step="1" name="relevance" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
-                        </td>
+                      <tr>
+                          <td style="font-weight: bold; font-size: 18px;">Relevância para a área</td>
+                          <td>
+                            <input min="0" max="10" step="1" name="relevance" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                          </td>
 
-                    </tr>
+                      </tr>
 
-                    <tr>
-                        <td style="font-weight: bold; font-size: 18px;">Qualidade visual da apresentação/pôster</td>
-                        <td>
-                          <input min="0" max="10" step="1" name="quality" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
-                        </td>
+                      <tr>
+                          <td style="font-weight: bold; font-size: 18px;">Qualidade visual da apresentação/pôster</td>
+                          <td>
+                            <input min="0" max="10" step="1" name="quality" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                          </td>
 
-                    </tr>
+                      </tr>
 
-                    <tr>
-                        <td style="font-weight: bold; font-size: 18px;">Domínio do assunto</td>
-                        <td>
-                          <input min="0" max="10" step="1" name="domain" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
-                        </td>
+                      <tr>
+                          <td style="font-weight: bold; font-size: 18px;">Domínio do assunto</td>
+                          <td>
+                            <input min="0" max="10" step="1" name="domain" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                          </td>
 
-                    </tr>
-                </tbody>
-            </table>
+                      </tr>
+                  </tbody>
+              </table>
 
-            <button type="submit" class="btn btn-info btn-round btn-lg">Salvar</button>
+              <button type="submit" class="btn btn-info btn-round btn-lg">Salvar</button>
 
-            </div>
-            </div>
+              </div>
+              </div>
+              </form>
 
-          </div> <!-- end .col -->
+            </div> <!-- end .col -->
 
 
           </div>

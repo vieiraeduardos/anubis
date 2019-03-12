@@ -37,3 +37,18 @@ class Judge():
             return None
         finally:
           self.connection.close()
+
+
+    def getAllJudges(self):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "SELECT  *  FROM  judges"
+            cursor.execute(sql)
+            result = cursor.fetchall()
+
+            return result
+        except Exception as e:
+            print(e)
+            return None
+        finally:
+          self.connection.close()

@@ -57,3 +57,18 @@ class Paper():
             return None
         finally:
           self.connection.close()
+
+
+    def getAllPapersByJudge(self, judge):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "SELECT * FROM papers INNER JOIN links WHERE papers.code = links.paper AND links.judge = %s"
+            cursor.execute(sql, (judge))
+            result = cursor.fetchall()
+
+            return result
+        except Exception as e:
+            print(e)
+            return None
+        finally:
+          self.connection.close()

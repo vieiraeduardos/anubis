@@ -14,7 +14,7 @@ from app.models.Paper import Paper
 def redirect_to_judge_event(code):
     user = Judge().getJudgeByEmail(session["email"])
     event = Event().getEventByCode(code)
-    papers = Paper().getAllPapers()
+    papers = Paper().getAllPapersByJudge(session["cpf"])
 
     return render_template("judge-events.html", user=user, event=event, papers=papers)
 
