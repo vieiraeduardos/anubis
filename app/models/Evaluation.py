@@ -40,3 +40,33 @@ class Evaluation():
             return 0
         finally:
           self.connection.close()
+
+    def getEvaluation(self, judge, paper):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "SELECT * FROM evaluation WHERE judge=%s AND paper=%s"
+            cursor.execute(sql, (judge, paper))
+            result = cursor.fetchone()
+
+            return result
+        except Exception as e:
+            print(e)
+            return None
+        finally:
+          self.connection.close()
+
+
+
+    def update(self):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "UPDATE evaluation SET originality=%s AND consistency=%s AND clarity=%s AND relevance=%s AND quality=%s AND domain=%s WHERE judge=%s AND paper=%s"
+            cursor.execute(sql, (self.originality, self.consistency, self.clarity, self.relevance, self.quality, self.domain, self.judge, self.paper))
+            self.connection.commit()
+
+            return True
+        except Exception as e:
+            print(e)
+            return False
+        finally:
+          self.connection.close()

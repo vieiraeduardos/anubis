@@ -6,6 +6,28 @@ from app.models.Evaluation import Evaluation
 from app.models.Paper import Paper
 from app.models.Link import Link
 
+@app.route("/judges/<judge>/papers/<paper>/evaluations/", methods=["GET"])
+def redirect_edit_evaluation(judge, paper):
+    evaluation = Evaluation().getEvaluation(judge=judge, paper=paper)
+
+    return render_template("edit-evaluation.html", evaluation=evaluation)
+
+@app.route("/judges/<judge>/papers/<paper>/evaluations/", methods=["POST"])
+def update_evaluation(judge, paper):
+    originality = request.form.get("originality")
+    consistency = request.form.get("consistency")
+    clarity = request.form.get("clarity")
+    relevance = request.form.get("relevance")
+    quality = request.form.get("quality")
+    domain = request.form.get("domain")
+
+    eval = Evaluation(paper=paper, judge=judge, originality=originality, consistency=consistency, clarity=clarity, relevance=relevance, quality=quality, domain=domain)
+
+    eval.update()
+
+    return render_template("judge.html")
+
+
 @app.route("/papers/<code>/evaluations/", methods=["GET"])
 def redirect_evaluation_page(code):
     paper = Paper().getPaperByCode(code)
