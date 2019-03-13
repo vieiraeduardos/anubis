@@ -4,7 +4,7 @@ from app import app
 
 from app.models.Evaluation import Evaluation
 from app.models.Paper import Paper
-
+from app.models.Link import Link
 
 @app.route("/papers/<code>/evaluations/", methods=["GET"])
 def redirect_evaluation_page(code):

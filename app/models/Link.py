@@ -26,7 +26,7 @@ class Link():
         try:
           with self.connection.cursor() as cursor:
             sql = "UPDATE links SET status = %s WHERE judge=%s AND paper=%s"
-            cursor.execute(sql, (1, self.judge, self.paper))
+            cursor.execute(sql, (1, judge, paper))
             self.connection.commit()
 
             return True

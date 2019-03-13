@@ -62,7 +62,7 @@ class Paper():
     def getAllPapersByJudge(self, judge):
         try:
           with self.connection.cursor() as cursor:
-            sql = "SELECT papers.title, links.* FROM papers INNER JOIN links WHERE papers.code = links.paper AND links.judge = %s"
+            sql = "SELECT papers.*, links.* FROM papers INNER JOIN links WHERE papers.code = links.paper AND links.judge = %s"
             cursor.execute(sql, (judge))
             result = cursor.fetchall()
 
