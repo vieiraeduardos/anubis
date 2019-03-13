@@ -26,4 +26,7 @@ def evaluate(paper):
 
     eval.create()
 
+    link = Link()
+    link.updateStatus(judge=judge, paper=paper)
+
     return redirect("/")

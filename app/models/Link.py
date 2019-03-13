@@ -10,8 +10,23 @@ class Link():
     def create(self):
         try:
           with self.connection.cursor() as cursor:
-            sql = "INSERT INTO links(judge, paper) VALUES (%s, %s)"
-            cursor.execute(sql, (self.judge, self.paper))
+            sql = "INSERT INTO links(judge, paper, status) VALUES (%s, %s, %s)"
+            cursor.execute(sql, (self.judge, self.paper, 0))
+            self.connection.commit()
+
+            return True
+        except Exception as e:
+            print(e)
+            return False
+        finally:
+          self.connection.close()
+
+
+    def updateStatus(self, judge, paper):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "UPDATE links SET status = %s WHERE judge=%s AND paper=%s"
+            cursor.execute(sql, (1, self.judge, self.paper))
             self.connection.commit()
 
             return True
