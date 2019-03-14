@@ -20,7 +20,7 @@ def admin_signup():
 
     if admin.create():
         return redirect("/login/")
-    return render_template("register-page.html")
+    return redirect("/login/admin/")
 
 @app.route("/login/admin/", methods=["POST"])
 def admin_login():
