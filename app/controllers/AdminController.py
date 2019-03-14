@@ -19,8 +19,8 @@ def admin_signup():
     admin = Admin(cpf=cpf, name=name, email=email, password=password, createdAt=createdAt, modifiedAt=modifiedAt)
 
     if admin.create():
-        return redirect("/login/")
-    return redirect("/login/admin/")
+        return redirect("/login/admin/")
+    return redirect("register-page.html")
 
 @app.route("/login/admin/", methods=["POST"])
 def admin_login():
