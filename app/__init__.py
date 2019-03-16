@@ -13,6 +13,9 @@ from app.controllers import EvaluationController
 from app.controllers import LinkController
 
 
+from app.models.Judge import Judge
+from app.models.Admin import Admin
+
 @app.route("/logout/")
 def logout():
     session.pop("cpf", "")
@@ -22,8 +25,10 @@ def logout():
 def index():
     if "cpf" in session:
         if session["type"] == "admin":
-            return render_template("admin.html")
-        return render_template("judge.html")
+            user = Admin().getAdminByEmail(session["email"])
+            return render_template("admin.html", user=user)
+        user = Judge().getJudgeByEmail(session["email"])
+        return render_template("judge.html", user=user)
     return render_template("index.html")
 
 @app.route("/login/admin/", methods=["GET"])

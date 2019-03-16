@@ -9,6 +9,7 @@ from app import app
 from app.models.Judge import Judge
 from app.models.Event import Event
 from app.models.Paper import Paper
+from app.models.Admin import Admin
 
 @app.route("/judges/events/<code>/", methods=["GET"])
 def redirect_to_judge_event(code):
@@ -49,7 +50,9 @@ def judge_login():
 
 @app.route("/judges/new/", methods=["GET"])
 def redirect_new_judge():
-    return render_template("new-judge.html")
+    user = Admin().getAdminByEmail(session["email"])
+
+    return render_template("new-judge.html", user=user)
 
 
 @app.route("/judges/", methods=["POST"])

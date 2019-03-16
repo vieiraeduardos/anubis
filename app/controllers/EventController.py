@@ -1,12 +1,13 @@
 import operator
 
-from flask import render_template
+from flask import render_template, session
 
 from app import app
 
 from app.models.Event import Event
 from app.models.Paper import Paper
 from app.models.Evaluation import Evaluation
+from app.models.Admin import Admin
 
 def ordenar(papers):
     for i in range(len(papers)):
@@ -23,6 +24,8 @@ def ordenar(papers):
 @app.route("/events/<code>/processing/", methods=["GET"])
 def redirect_processing(code):
     papers = Paper().getAllPapers()
+    user = Admin().getAdminByEmail(session["email"])
+
 
     for paper in papers:
         note = Evaluation().getNoteByPaper(paper["code"])
@@ -33,11 +36,12 @@ def redirect_processing(code):
 
     papers = ordenar(papers)
 
-    return render_template("processing.html", papers=papers)
+    return render_template("processing.html", papers=papers, user=user)
 
 @app.route("/events/<code>/", methods=["GET"])
 def redirect_event_page(code):
     event = Event().getEventByCode(code)
     papers = Paper().getAllPapers()
+    user = Admin().getAdminByEmail(session["email"])
 
-    return render_template("admin-events.html", event=event, papers=papers)
+    return render_template("admin-events.html", event=event, papers=papers, user=user)

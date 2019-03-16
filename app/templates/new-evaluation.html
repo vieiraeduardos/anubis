@@ -30,12 +30,12 @@
           </div>
         </div>
         <ul class="navbar-nav">
-          <!--<li class="nav-item">
-            <a class="nav-link" href="../events.html">Eventos</a>
+          <li class="nav-item">
+            <a class="nav-link">Olá, {{ user.name }}!</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/settings/">Configurações</a>
-          </li>-->
+            <a href="/logout/" class="nav-link" rel="tooltip" title="Sair da Aplicação" data-placement="bottom"><i class="tim-icons icon-button-power"></i></a>
+          </li>
         </ul>
       </div>
     </div>
@@ -127,6 +127,7 @@
               </table>
 
               <button type="submit" class="btn btn-info btn-round btn-lg">Salvar</button>
+              <a href="/" class="btn btn-warning btn-round btn-lg">Cancelar</a>
 
               </div>
               </div>

@@ -24,8 +24,9 @@ def redirect_new_paper():
     authors = Author().getAllAuthors()
     categories = Category().getAllCategories()
     subcategories = Subcategory().getAllSubcategories()
-
-    return render_template("new-paper.html", authors=authors, categories=categories, subcategories=subcategories)
+    user = Admin().getAdminByEmail(session["email"])
+    
+    return render_template("new-paper.html", authors=authors, categories=categories, subcategories=subcategories, user=user)
 
 
 @app.route("/papers/", methods=["POST"])

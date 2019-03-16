@@ -5,12 +5,13 @@ from app import app
 from app.models.Evaluation import Evaluation
 from app.models.Paper import Paper
 from app.models.Link import Link
+from app.models.Judge import Judge
 
 @app.route("/judges/<judge>/papers/<paper>/evaluations/", methods=["GET"])
 def redirect_edit_evaluation(judge, paper):
     evaluation = Evaluation().getEvaluation(judge=judge, paper=paper)
-
-    return render_template("edit-evaluation.html", evaluation=evaluation)
+    user = Judge().getJudgeByEmail(session["email"])
+    return render_template("edit-evaluation.html", evaluation=evaluation, user=user)
 
 @app.route("/judges/<judge>/papers/<paper>/evaluations/", methods=["POST"])
 def update_evaluation(judge, paper):
@@ -31,8 +32,9 @@ def update_evaluation(judge, paper):
 @app.route("/papers/<code>/evaluations/", methods=["GET"])
 def redirect_evaluation_page(code):
     paper = Paper().getPaperByCode(code)
+    user = Judge().getJudgeByEmail(session["email"])
 
-    return render_template("new-evaluation.html", code=code, paper=paper)
+    return render_template("new-evaluation.html", code=code, paper=paper, user=user)
 
 @app.route("/papers/<paper>/evaluations/", methods=["POST"])
 def evaluate(paper):

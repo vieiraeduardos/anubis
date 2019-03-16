@@ -1,14 +1,18 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, session
 
 from datetime import date
 
 from app import app
 
 from app.models.Author import Author
+from app.models.Admin import Admin
+
 
 @app.route("/authors/new/", methods=["GET"])
 def redirect_new_author():
-    return render_template("new-author.html")
+    user = Admin().getAdminByEmail(session["email"])
+
+    return render_template("new-author.html", user=user)
 
 @app.route("/authors/", methods=["POST"])
 def create_author():
@@ -18,8 +22,6 @@ def create_author():
     createdAt = str(date.today())
     modifiedAt = str(date.today())
     email = request.form.get("email")
-
-    print(email)
 
     author = Author(email=email, name=name, cpf=cpf, isStudent=isStudent, createdAt=createdAt, modifiedAt=modifiedAt)
 

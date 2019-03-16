@@ -1,9 +1,10 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, session
 from app import app
 
 from app.models.Paper import Paper
 from app.models.Judge import Judge
 from app.models.Link import Link
+from app.models.Admin import Admin
 
 @app.route("/links/", methods=["POST"])
 def link_judge_to_paper():
@@ -20,5 +21,7 @@ def link_judge_to_paper():
 def get_redirect_link():
     papers = Paper().getAllPapers()
     judges = Judge().getAllJudges()
+    user = Admin().getAdminByEmail(session["email"])
 
-    return render_template("link-judge.html", papers=papers, judges=judges)
+
+    return render_template("link-judge.html", papers=papers, judges=judges, user=user)
