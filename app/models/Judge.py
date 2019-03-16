@@ -38,6 +38,24 @@ class Judge():
         finally:
           self.connection.close()
 
+    def getAllJudgesByPaper(self, paper):
+        print(paper)
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "select judges.* from judges inner join links where links.paper = %s and links.judge = judges.cpf"
+            cursor.execute(sql, (paper))
+            result = cursor.fetchall()
+
+            print(result)
+
+            return result
+        except Exception as e:
+            print("ERRRO")
+            print(e)
+            return None
+        finally:
+          self.connection.close()
+
 
     def getAllJudges(self):
         try:

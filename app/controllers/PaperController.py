@@ -9,13 +9,15 @@ from app.models.Category import Category
 from app.models.Subcategory import Subcategory
 from app.models.Paper import Paper
 from app.models.Admin import Admin
+from app.models.Judge import Judge
 
 @app.route("/papers/<code>/", methods=["GET"])
 def redirect_edit_paper(code):
     paper = Paper().getPaperByCode(code)
     user = Admin().getAdminByEmail(session["email"])
+    judges = Judge().getAllJudgesByPaper(code);
 
-    return render_template("edit-paper.html", paper=paper, user=user)
+    return render_template("edit-paper.html", paper=paper, user=user, judges=judges)
 
 @app.route("/papers/new/", methods=["GET"])
 def redirect_new_paper():
