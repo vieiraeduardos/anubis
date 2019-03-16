@@ -70,6 +70,19 @@
                             <h3>Título do Projeto: {{ paper.title }}</h3>
 
                           </div>
+                          <div class="input-group">
+                            <p>Avaliadores:<br> </p>
+                            {% if judges %}
+                              {% for js in judges %}
+                                {% for judge in js %}
+                                  {% if paper.code == judge.paper %}
+                                    <p>{{ judge.name }}; </p>
+                                  {% endif %}
+                                {% endfor %}
+                              {% endfor %}
+                            {% endif %}
+
+                          </div>
 
                           <div class="input-group">
                             {% if paper.status == 0 %}

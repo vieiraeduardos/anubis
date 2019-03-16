@@ -16,7 +16,17 @@ def redirect_to_judge_event(code):
     event = Event().getEventByCode(code)
     papers = Paper().getAllPapersByJudge(session["cpf"])
 
-    return render_template("judge-events.html", user=user, event=event, papers=papers)
+    judges = []
+
+    for paper in papers:
+        j = Judge().getAllJudgesByPaper(paper["code"])
+        judges.append(j)
+
+    for j in judges:
+        for judge in j:
+            print(judge["name"])
+
+    return render_template("judge-events.html", user=user, event=event, papers=papers, judges=judges)
 
 
 @app.route("/login/judge/", methods=["POST"])
