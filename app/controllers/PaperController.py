@@ -25,7 +25,7 @@ def redirect_new_paper():
     categories = Category().getAllCategories()
     subcategories = Subcategory().getAllSubcategories()
     user = Admin().getAdminByEmail(session["email"])
-    
+
     return render_template("new-paper.html", authors=authors, categories=categories, subcategories=subcategories, user=user)
 
 
@@ -36,12 +36,10 @@ def create_paper():
     author = request.form.get("author")
     category = request.form.get("category")
     subcategory = request.form.get("subcategory")
-    isPresented = 1 if request.form.get("isPresented") == "1" else 0
-    isExposed = 1 if request.form.get("isExposed") == "1" else 0
     createdAt = str(date.today())
     modifiedAt = str(date.today())
 
-    paper = Paper(title=title, abstract=abstract, author=author, category=category, subcategory=subcategory, isExposed=isExposed, isPresented=isPresented, createdAt=createdAt, modifiedAt=modifiedAt)
+    paper = Paper(title=title, abstract=abstract, author=author, isExposed=0, isPresented=0, category=category, subcategory=subcategory, createdAt=createdAt, modifiedAt=modifiedAt)
 
     paper.create()
 

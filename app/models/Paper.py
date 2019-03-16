@@ -16,7 +16,7 @@ class Paper():
     def create(self):
         try:
           with self.connection.cursor() as cursor:
-            sql = "INSERT INTO papers(event, title, abstract, author, category, subcategory, isExposed, isPresented, createdAt, modifiedAt) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            sql = "INSERT INTO papers(event, title, abstract, author, category, subcategory, isExposed, isPresented, createdAt, modifiedAt) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
             cursor.execute(sql, (1, self.title, self.abstract, self.author, self.category, self.subcategory, self.isExposed, self.isPresented, self.createdAt, self.modifiedAt))
             self.connection.commit()
 
