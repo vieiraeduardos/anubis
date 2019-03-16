@@ -71,12 +71,14 @@
 
                           </div>
                           <div class="input-group">
-                            <p>Avaliadores:<br> </p>
+                            <h4>Avaliadores:</h4>
                             {% if judges %}
                               {% for js in judges %}
                                 {% for judge in js %}
                                   {% if paper.code == judge.paper %}
-                                    <p>{{ judge.name }}; </p>
+                                    <div class="input-group">
+                                      <p><strong>{{ judge.name }}; </strong></p>
+                                    </div>
                                   {% endif %}
                                 {% endfor %}
                               {% endfor %}
