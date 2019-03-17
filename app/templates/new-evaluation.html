@@ -69,6 +69,17 @@
               <form action="/papers/{{paper.code}}/evaluations/" method="POST">
                 <div class="card card-register">
                   <div class="card-body">
+                    <label for="exampleFormControlSelect1">Apresentador</label>
+                    <div class="input-group">
+                      <select name="presenter" class="form-control" id="exampleFormControlSelect1" style="color: black; background-color: white;">
+                        {% if authors %}
+                          {% for author in authors %}
+                            <option value="{{ author }}">{{ author }}</option>
+                          {% endfor %}
+                        {% endif %}
+
+                      </select>
+                    </div>
 
                 <table class="table">
                   <thead>

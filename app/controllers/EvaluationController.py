@@ -11,7 +11,11 @@ from app.models.Judge import Judge
 def redirect_edit_evaluation(judge, paper):
     evaluation = Evaluation().getEvaluation(judge=judge, paper=paper)
     user = Judge().getJudgeByEmail(session["email"])
-    return render_template("edit-evaluation.html", evaluation=evaluation, user=user)
+    paper = Paper().getPaperByCode(paper)
+
+    authors = paper["autores"].split(",")
+
+    return render_template("edit-evaluation.html", evaluation=evaluation, user=user, authors=authors)
 
 @app.route("/judges/<judge>/papers/<paper>/evaluations/", methods=["POST"])
 def update_evaluation(judge, paper):
@@ -21,12 +25,15 @@ def update_evaluation(judge, paper):
     relevance = request.form.get("relevance")
     quality = request.form.get("quality")
     domain = request.form.get("domain")
+    presenter = request.form.get("presenter")
 
-    eval = Evaluation(paper=paper, judge=judge, originality=originality, consistency=consistency, clarity=clarity, relevance=relevance, quality=quality, domain=domain)
+    eval = Evaluation(paper=paper, judge=judge, originality=originality, consistency=consistency, clarity=clarity, relevance=relevance, quality=quality, domain=domain, presenter=presenter)
 
     eval.update()
 
-    return render_template("judge.html")
+    user = Judge().getJudgeByEmail(session["email"])
+
+    return render_template("judge.html", user=user)
 
 
 @app.route("/papers/<code>/evaluations/", methods=["GET"])
@@ -34,7 +41,9 @@ def redirect_evaluation_page(code):
     paper = Paper().getPaperByCode(code)
     user = Judge().getJudgeByEmail(session["email"])
 
-    return render_template("new-evaluation.html", code=code, paper=paper, user=user)
+    authors = paper["autores"].split(",")
+
+    return render_template("new-evaluation.html", code=code, paper=paper, user=user, authors=authors)
 
 @app.route("/papers/<paper>/evaluations/", methods=["POST"])
 def evaluate(paper):
@@ -45,8 +54,9 @@ def evaluate(paper):
     quality = request.form.get("quality")
     domain = request.form.get("domain")
     judge = session["cpf"]
+    presenter = request.form.get("presenter")
 
-    eval = Evaluation(paper=paper, judge=judge, originality=originality, consistency=consistency, clarity=clarity, relevance=relevance, quality=quality, domain=domain)
+    eval = Evaluation(paper=paper, judge=judge, originality=originality, consistency=consistency, clarity=clarity, relevance=relevance, quality=quality, domain=domain, presenter=presenter)
 
     eval.create()
 
