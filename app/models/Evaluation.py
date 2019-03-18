@@ -11,7 +11,7 @@ class Evaluation():
         self.relevance = relevance
         self.quality = quality
         self.domain = domain
-        self.presenter = presenter
+        self.presenter = str(presenter)
         self.connection = DatabaseFactory().getConnection()
 
     def create(self):

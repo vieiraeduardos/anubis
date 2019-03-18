@@ -7,6 +7,7 @@ from app.models.Paper import Paper
 from app.models.Link import Link
 from app.models.Judge import Judge
 
+
 @app.route("/judges/<judge>/papers/<paper>/evaluations/", methods=["GET"])
 def redirect_edit_evaluation(judge, paper):
     evaluation = Evaluation().getEvaluation(judge=judge, paper=paper)
@@ -33,7 +34,7 @@ def update_evaluation(judge, paper):
 
     user = Judge().getJudgeByEmail(session["email"])
 
-    return render_template("judge.html", user=user)
+    return render_template("messages/success-evaluation.html", user=user)
 
 
 @app.route("/papers/<code>/evaluations/", methods=["GET"])
@@ -63,4 +64,4 @@ def evaluate(paper):
     link = Link()
     link.updateStatus(judge=judge, paper=paper)
 
-    return redirect("/")
+    return render_template("messages/success-evaluation.html", user=user)

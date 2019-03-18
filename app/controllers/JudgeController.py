@@ -11,6 +11,13 @@ from app.models.Event import Event
 from app.models.Paper import Paper
 from app.models.Admin import Admin
 
+@app.route("/judges/")
+def get_judges():
+    judges = Judge().getAllJudges()
+    user = Admin().getAdminByEmail(session["email"])
+
+    return render_template("list-judges.html", user=user, judges=judges)
+
 @app.route("/judges/events/<code>/", methods=["GET"])
 def redirect_to_judge_event(code):
     user = Judge().getJudgeByEmail(session["email"])
@@ -68,4 +75,4 @@ def create_judge():
 
     judge.create()
 
-    return redirect("/")
+    return redirect("/judges/new/")
