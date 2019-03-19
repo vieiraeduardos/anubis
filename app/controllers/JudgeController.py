@@ -9,7 +9,7 @@ from app import app
 from app.models.Judge import Judge
 from app.models.Event import Event
 from app.models.Paper import Paper
-from app.models.Admin impoMySqLUn@Btmsrt Admin
+from app.models.Admin import Admin
 
 @app.route("/judges/<code>/remove/")
 def delete_judge(code):
