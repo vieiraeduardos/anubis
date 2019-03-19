@@ -79,6 +79,19 @@
                   <div class="card-body">
 
                       <div class="input-group">
+                        {% if paper.category == 1 %}
+                          <span class="badge badge-success">Teleeducação</span>
+                        {% endif %}
+                        {% if paper.category == 2 %}
+                          <span class="badge badge-danger">Teleassistência</span>
+                        {% endif %}
+                        {% if paper.category == 3 %}
+                          <span class="badge badge-warning">TICs</span>
+                        {% endif %}
+
+                      </div>
+
+                      <div class="input-group">
                         <h3>Título: {{ paper.title }}</h3>
 
                       </div>
