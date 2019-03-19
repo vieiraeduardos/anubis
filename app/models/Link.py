@@ -21,6 +21,21 @@ class Link():
         finally:
           self.connection.close()
 
+    def remove(self, code):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "delete from links where code=%s"
+            cursor.execute(sql, (code))
+            self.connection.commit()
+
+            return True
+        except Exception as e:
+            print(e)
+            return False
+        finally:
+          self.connection.close()
+
+
     def isComplete(self):
         try:
           with self.connection.cursor() as cursor:
@@ -52,7 +67,7 @@ class Link():
         except Exception as e:
             print(e)
             return False
-    
+
     def updateStatus(self, judge, paper):
         try:
           with self.connection.cursor() as cursor:

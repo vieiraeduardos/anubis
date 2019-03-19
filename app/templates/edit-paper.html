@@ -113,10 +113,29 @@
                   <div class="card-body" style>
                     {% if judges %}
                       {% for judge in judges %}
-                        <p>{{ judge.name }}</p>
-                      {% endfor %}
-                    {% endif %}
-                  </div>
+                      <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 18px;">Nome</th>
+                                <th style="font-size: 18px;">Remover</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% if judges %}
+                            {% for judge in judges %}
+                              <tr>
+                                <td style="font-weight: bold; font-size: 18px;">{{ judge.name }}</td>
+                                <td><a href="/papers/{{ judge.paper }}/links/{{ judge.code }}/remove/" class="nav-link" rel="tooltip" title="Remover" data-placement="bottom"><i class="tim-icons icon-trash-simple"></i></a></td>
+
+                              </tr>
+                            {% endfor %}
+                          {% endif %}
+
+                        </tbody>
+                      </table>
+                    {% endfor %}
+                  {% endif %}
+                </div>
 
                 </div>
 

@@ -6,6 +6,13 @@ from app.models.Judge import Judge
 from app.models.Link import Link
 from app.models.Admin import Admin
 
+@app.route("/papers/<paper>/links/<code>/remove/")
+def remove_link(paper, code):
+    link = Link()
+    link.remove(code)
+
+    return redirect("/papers/" + paper)
+
 @app.route("/links/", methods=["POST"])
 def link_judge_to_paper():
     judge = request.form.get("judge")
