@@ -58,18 +58,18 @@
                 <table class="table">
                   <thead>
                       <tr>
-                          <th>Nome</th>
-                          <th>E-mail</th>
-                          <th>Editar</th>
-                          <th>Remover</th>
+                          <th style="font-size: 18px;">Nome</th>
+                          <th style="font-size: 18px;">E-mail</th>
+                          <th style="font-size: 18px;">Editar</th>
+                          <th style="font-size: 18px;">Remover</th>
                       </tr>
                   </thead>
                   <tbody>
                     {% if judges %}
                       {% for judge in judges %}
                         <tr>
-                          <td>{{ judge.name }}</td>
-                          <td>{{ judge.email }}</td>
+                          <td style="font-weight: bold; font-size: 18px;">{{ judge.name }}</td>
+                          <td style="font-weight: bold; font-size: 18px;">{{ judge.email }}</td>
                           <td><a href="/judges/{{ judge.cpf }}" class="nav-link" rel="tooltip" title="Editar avaliador" data-placement="bottom"><i class="tim-icons icon-pencil"></i></a></td>
                           <td><a href="/judges/{{ judge.cpf }}/remove/" class="nav-link" rel="tooltip" title="Remover avaliador" data-placement="bottom"><i class="tim-icons icon-trash-simple"></i></a></td>
 
