@@ -61,7 +61,7 @@ class Evaluation():
     def update(self):
         try:
           with self.connection.cursor() as cursor:
-            sql = "UPDATE evaluation SET presenter=%s AND originality=%s AND consistency=%s AND clarity=%s AND relevance=%s AND quality=%s AND domain=%s WHERE judge=%s AND paper=%s"
+            sql = "UPDATE evaluation SET presenter=%s, originality=%s, consistency=%s, clarity=%s, relevance=%s, quality=%s, domain=%s WHERE judge=%s AND paper=%s"
             cursor.execute(sql, (self.presenter, self.originality, self.consistency, self.clarity, self.relevance, self.quality, self.domain, self.judge, self.paper))
             self.connection.commit()
 

@@ -64,4 +64,6 @@ def evaluate(paper):
     link = Link()
     link.updateStatus(judge=judge, paper=paper)
 
+    user = Judge().getJudgeByEmail(session["email"])
+
     return render_template("messages/success-evaluation.html", user=user)
