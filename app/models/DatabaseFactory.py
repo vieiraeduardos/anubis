@@ -4,7 +4,7 @@ class DatabaseFactory():
   def __init__(self):
     self.connection = pymysql.connect(host='localhost',
                                  user='root',
-                                 password='mysql',
+                                 password='MySqLUn@Btms',
                                  db='MySqLUn@Btms',
                                  charset='utf8mb4',     cursorclass=pymysql.cursors.DictCursor)
 
