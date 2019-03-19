@@ -111,8 +111,7 @@
 
                 <div class="card card-register">
                   <div class="card-body" style>
-                    {% if judges %}
-                      {% for judge in judges %}
+
                       <table class="table">
                         <thead>
                             <tr>
@@ -121,6 +120,7 @@
                             </tr>
                         </thead>
                         <tbody>
+
                           {% if judges %}
                             {% for judge in judges %}
                               <tr>
@@ -130,11 +130,10 @@
                               </tr>
                             {% endfor %}
                           {% endif %}
-
+                          
                         </tbody>
                       </table>
-                    {% endfor %}
-                  {% endif %}
+
                 </div>
 
                 </div>
