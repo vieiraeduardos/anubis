@@ -24,6 +24,22 @@ class Judge():
         finally:
           self.connection.close()
 
+
+    def delete(self, code):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "DELETE FROM judges WHERE cpf=%s"
+            cursor.execute(sql, (code))
+            self.connection.commit()
+
+            return True
+        except Exception as e:
+            print(e)
+            return False
+        finally:
+          self.connection.close()
+
+
     def update(self, code):
         try:
           with self.connection.cursor() as cursor:

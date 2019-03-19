@@ -11,6 +11,14 @@ from app.models.Event import Event
 from app.models.Paper import Paper
 from app.models.Admin import Admin
 
+@app.route("/judges/<code>/remove/")
+def delete_judge(code):
+    judge = Judge()
+    
+    judge.delete(code)
+
+    return redirect("/judges/")
+
 @app.route("/judges/<code>/")
 def edit_judge(code):
     judge = Judge().getJudgeByCode(code)
