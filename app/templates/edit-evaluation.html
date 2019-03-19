@@ -78,21 +78,21 @@
                       <tr>
                           <td style="font-weight: bold; font-size: 18px;">Originalidade e caráter inovador</td>
                           <td>
-                            <input value="{{ evaluation.originality }}" min="0" max="10" step="1" name="originality" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                            <input value="{{ evaluation.originality }}" name="originality" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
                           </td>
 
                       </tr>
                       <tr>
                           <td style="font-weight: bold; font-size: 18px;">Consistência e rigor na abordagem teórico-metodológica</td>
                           <td>
-                            <input value="{{ evaluation.consistency }}" min="0" max="10" step="1" name="consistency" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                            <input value="{{ evaluation.consistency }}" name="consistency" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
                           </td>
 
                       </tr>
                       <tr>
                           <td style="font-weight: bold; font-size: 18px;">Clareza dos resultados alcançados</td>
                           <td>
-                            <input value="{{ evaluation.clarity }}" min="0" max="10" step="1" name="clarity" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                            <input value="{{ evaluation.clarity }}" name="clarity" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
                           </td>
 
                       </tr>
@@ -100,7 +100,7 @@
                       <tr>
                           <td style="font-weight: bold; font-size: 18px;">Relevância para a área</td>
                           <td>
-                            <input value="{{ evaluation.relevance }}" min="0" max="10" step="1" name="relevance" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                            <input value="{{ evaluation.relevance }}" name="relevance"  class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
                           </td>
 
                       </tr>
@@ -108,7 +108,7 @@
                       <tr>
                           <td style="font-weight: bold; font-size: 18px;">Qualidade visual da apresentação/pôster</td>
                           <td>
-                            <input value="{{ evaluation.quality }}" min="0" max="10" step="1" name="quality" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                            <input value="{{ evaluation.quality }}" name="quality" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
                           </td>
 
                       </tr>
@@ -116,14 +116,14 @@
                       <tr>
                           <td style="font-weight: bold; font-size: 18px;">Domínio do assunto</td>
                           <td>
-                            <input value="{{ evaluation.domain }}" min="0" max="10" step="1" name="domain" type="number" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
+                            <input value="{{ evaluation.domain }}" name="domain" class="form-control text-center" placeholder="Nota" style="color: black; background-color: white; font-size: 18px;">
                           </td>
 
                       </tr>
                   </tbody>
               </table>
 
-              <button type="submit" class="btn btn-info btn-round btn-lg">Salvar</button>
+              <button id="btnUpdate" type="submit" class="btn btn-info btn-round btn-lg">Salvar</button>
               <a href="/" class="btn btn-warning btn-round btn-lg">Cancelar</a>
 
               </div>
@@ -138,3 +138,28 @@
       </div>
 
 {% include "footer.html" %}
+
+<script>
+  $(document).ready(function(){
+    $("input").change(function(event){
+      $("input").each(function(index){
+        if($(this).val() > 10 || $(this).val() < 0) {
+          $($(this).css("background-color", "red"));
+        } else {
+          $($(this).css("background-color", "green"));
+        }
+      });
+    });
+
+    $("form").submit(function(event){
+      $("input").each(function(index){
+        if($(this).val() > 10 || $(this).val() < 0) {
+          event.preventDefault();
+
+          alert("Você deve pôr números entre 0 e 10. Veja os campos vermelhos!");
+
+        }
+      });
+    });
+  });
+</script>

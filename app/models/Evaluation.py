@@ -5,12 +5,12 @@ class Evaluation():
     def __init__(self, presenter="", paper="", judge="", originality=0, consistency=0, clarity=0, relevance=0, quality=0, domain=0):
         self.paper = paper
         self.judge = judge
-        self.originality = originality
-        self.consistency = consistency
-        self.clarity = clarity
-        self.relevance = relevance
-        self.quality = quality
-        self.domain = domain
+        self.originality = float(originality)
+        self.consistency = float(consistency)
+        self.clarity = float(clarity)
+        self.relevance = float(relevance)
+        self.quality = float(quality)
+        self.domain = float(domain)
         self.presenter = str(presenter)
         self.connection = DatabaseFactory().getConnection()
 
@@ -59,6 +59,7 @@ class Evaluation():
 
 
     def update(self):
+        print(self.originality)
         try:
           with self.connection.cursor() as cursor:
             sql = "UPDATE evaluation SET presenter=%s, originality=%s, consistency=%s, clarity=%s, relevance=%s, quality=%s, domain=%s WHERE judge=%s AND paper=%s"

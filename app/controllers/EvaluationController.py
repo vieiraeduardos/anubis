@@ -28,6 +28,8 @@ def update_evaluation(judge, paper):
     domain = request.form.get("domain")
     presenter = request.form.get("presenter")
 
+    print(originality)
+
     eval = Evaluation(paper=paper, judge=judge, originality=originality, consistency=consistency, clarity=clarity, relevance=relevance, quality=quality, domain=domain, presenter=presenter)
 
     eval.update()
