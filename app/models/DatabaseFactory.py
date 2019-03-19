@@ -5,7 +5,7 @@ class DatabaseFactory():
     self.connection = pymysql.connect(host='localhost',
                                  user='root',
                                  password='mysql',
-                                 db='anubisdb',
+                                 db='MySqLUn@Btms',
                                  charset='utf8mb4',     cursorclass=pymysql.cursors.DictCursor)
 
   def getConnection(self):
