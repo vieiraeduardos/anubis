@@ -24,6 +24,21 @@ class Judge():
         finally:
           self.connection.close()
 
+    def update(self, code):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "UPDATE judges SET cpf=%s, name=%s, email=%s  WHERE cpf=%s"
+            cursor.execute(sql, (self.cpf, self.name, self.email, code))
+            self.connection.commit()
+
+            return True
+        except Exception as e:
+            print(e)
+            return False
+        finally:
+          self.connection.close()
+
+
     def getJudgeByEmail(self, email):
         try:
           with self.connection.cursor() as cursor:

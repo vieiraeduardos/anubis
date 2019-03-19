@@ -86,13 +86,16 @@ def create_judge():
 
 
 @app.route("/judges/<code>/", methods=["POST"])
-def update_judge():
+def update_judge(code):
     name = request.form.get("name")
     cpf = request.form.get("cpf")
     email = request.form.get("email")
 
+    print(name)
+    print(email)
+
     judge = Judge(name=name, cpf=cpf, email=email)
 
-    judge.update()
+    judge.update(code)
 
     return redirect("/judges/")
