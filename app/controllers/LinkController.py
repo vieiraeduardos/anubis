@@ -14,15 +14,20 @@ def link_judge_to_paper():
     link = Link(judge=judge, paper=paper)
 
     if(link.isComplete()):
-        link = Link(judge=judge, paper=paper)
-        link.create()
-        return redirect("/")
+        if(link.alreadyExists()):
+            link = Link(judge=judge, paper=paper)
+            link.create()
+            return redirect("/")
+        else:
+            error="O avaliador já foi selecionado para avaliar este trabalho!"
+    else:
+        error="O trabalho selecionado já possui o limite máximo de avaliadores!"
 
     papers = Paper().getAllPapers()
     judges = Judge().getAllJudges()
     user = Admin().getAdminByEmail(session["email"])
 
-    return render_template("link-judge.html", papers=papers, judges=judges, user=user, error="O trabalho selecionado já possui o limite máximo de avaliadores!")
+    return render_template("link-judge.html", papers=papers, judges=judges, user=user, error=error)
 
 
 @app.route("/links/", methods=["GET"])

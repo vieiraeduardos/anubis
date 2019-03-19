@@ -28,8 +28,6 @@ class Link():
             cursor.execute(sql, (self.paper))
             result = cursor.fetchone()
 
-            print(result)
-
             if result["number"] < 2:
                 return True
             else:
@@ -38,10 +36,23 @@ class Link():
         except Exception as e:
             print(e)
             return False
-        finally:
-          self.connection.close()
 
+    def alreadyExists(self):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "select * from links where paper=%s and judge=%s"
+            cursor.execute(sql, (self.paper, self.judge))
+            result = cursor.fetchall()
 
+            if result:
+                return False
+            else:
+                return True
+
+        except Exception as e:
+            print(e)
+            return False
+    
     def updateStatus(self, judge, paper):
         try:
           with self.connection.cursor() as cursor:
