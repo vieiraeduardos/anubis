@@ -63,7 +63,18 @@
                 </div>
                 <div class="card-body">
                   <form class="form" action="/links/" method="POST">
-                    <label for="exampleFormControlSelect1">Autor</label>
+
+                    {% if error %}
+                      <div class="alert alert-danger alert-with-icon">
+                          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                              <i class="tim-icons icon-simple-remove"></i>
+                          </button>
+                          <span data-notify="icon" class="tim-icons icon-alert-circle-exc"></span>
+                          <span><b> Aviso! - </b> {{ error }}</span>
+                      </div>
+                    {% endif %}
+
+                    <label for="exampleFormControlSelect1">Avaliador</label>
                     <div class="input-group">
                       <select name="judge" class="form-control" id="exampleFormControlSelect1" style="color: black; background-color: white;">
                         {% if judges %}
@@ -75,7 +86,7 @@
                       </select>
                     </div>
 
-                    <label for="exampleFormControlSelect1">Autor</label>
+                    <label for="exampleFormControlSelect1">Trabalho</label>
                     <div class="input-group">
                       <select name="paper" class="form-control" id="exampleFormControlSelect1" style="color: black; background-color: white;">
                         {% if papers %}

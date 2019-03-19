@@ -21,6 +21,26 @@ class Link():
         finally:
           self.connection.close()
 
+    def isComplete(self):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "select count(paper) as number from links where paper=%s"
+            cursor.execute(sql, (self.paper))
+            result = cursor.fetchone()
+
+            print(result)
+
+            if result["number"] < 2:
+                return True
+            else:
+                return False
+
+        except Exception as e:
+            print(e)
+            return False
+        finally:
+          self.connection.close()
+
 
     def updateStatus(self, judge, paper):
         try:

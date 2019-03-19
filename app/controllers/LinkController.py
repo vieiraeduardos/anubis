@@ -13,9 +13,17 @@ def link_judge_to_paper():
 
     link = Link(judge=judge, paper=paper)
 
-    link.create()
+    if(link.isComplete()):
+        link = Link(judge=judge, paper=paper)
+        link.create()
+        return redirect("/")
 
-    return redirect("/")
+    papers = Paper().getAllPapers()
+    judges = Judge().getAllJudges()
+    user = Admin().getAdminByEmail(session["email"])
+
+    return render_template("link-judge.html", papers=papers, judges=judges, user=user, error="O trabalho selecionado já possui o limite máximo de avaliadores!")
+
 
 @app.route("/links/", methods=["GET"])
 def get_redirect_link():
