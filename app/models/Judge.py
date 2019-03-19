@@ -67,3 +67,19 @@ class Judge():
             return None
         finally:
           self.connection.close()
+
+
+
+    def getJudgeByCode(self, code):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "SELECT  *  FROM  judges WHERE cpf=%s"
+            cursor.execute(sql, (code))
+            result = cursor.fetchone()
+
+            return result
+        except Exception as e:
+            print(e)
+            return None
+        finally:
+          self.connection.close()

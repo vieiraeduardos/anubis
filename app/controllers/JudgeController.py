@@ -11,6 +11,13 @@ from app.models.Event import Event
 from app.models.Paper import Paper
 from app.models.Admin import Admin
 
+@app.route("/judges/<code>/")
+def edit_judge(code):
+    judge = Judge().getJudgeByCode(code)
+    user = Admin().getAdminByEmail(session["email"])
+
+    return render_template("edit-judge.html", user=user, judge=judge)
+
 @app.route("/judges/")
 def get_judges():
     judges = Judge().getAllJudges()
@@ -76,3 +83,16 @@ def create_judge():
     judge.create()
 
     return redirect("/judges/new/")
+
+
+@app.route("/judges/<code>/", methods=["POST"])
+def update_judge():
+    name = request.form.get("name")
+    cpf = request.form.get("cpf")
+    email = request.form.get("email")
+
+    judge = Judge(name=name, cpf=cpf, email=email)
+
+    judge.update()
+
+    return redirect("/judges/")

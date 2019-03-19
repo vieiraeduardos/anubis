@@ -44,7 +44,6 @@
 
   <div class="wrapper">
 
-
         <div class="section">
           <div class="container">
             <div class="row justify-content-between">
@@ -56,27 +55,32 @@
               </div>
 
               <div class="col-md-12">
-                <h1 class="profile-title text-left">Congresso Brasileiro de Telemedicina e Telessaúde</h1>
-                {% if judges %}
-                  {% for judge in judges %}
+                <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Nome</th>
+                          <th>E-mail</th>
+                          <th>Editar</th>
+                          <th>Remover</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% if judges %}
+                      {% for judge in judges %}
+                        <tr>
+                          <td>{{ judge.name }}</td>
+                          <td>{{ judge.email }}</td>
+                          <td><a href="/judges/{{ judge.cpf }}" class="nav-link" rel="tooltip" title="Editar avaliador" data-placement="bottom"><i class="tim-icons icon-pencil"></i></a></td>
+                          <td><a href="" class="nav-link" rel="tooltip" title="Remover avaliador" data-placement="bottom"><i class="tim-icons icon-trash-simple"></i></a></td>
 
-                    <div class="card card-register">
+                        </tr>
+                      {% endfor %}
+                    {% endif %}
 
-                      <div class="card-body">
-                        <div class="input-group">
-                          <h4>Nome: {{ judge.name }}</h4>
-                        </div>
+                  </tbody>
+                </table>
+              </div> <!-- end .col -->
 
-                        <div class="input-group">
-                          <h5>E-mail: {{ judge.email }}</h5>
-                        </div>
-                      </div>
-                    </div> <!-- end .card -->
-                  {% endfor %}
-                {% endif %}
-
-
-              </div>
             </div>
           </div>
         </div>
