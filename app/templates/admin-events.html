@@ -96,6 +96,33 @@
 
                       </div>
 
+                      <div class="input-group">
+                        <table class="table">
+                          <thead>
+                              <tr>
+                                  <th style="font-size: 18px;">Nome</th>
+                                  <th style="font-size: 18px;">Remover</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+
+                            {% if links %}
+                              {% for link in links %}
+                                {% if link.paper == paper.code %}
+                                <tr>
+                                  <td style="font-weight: bold; font-size: 18px;">{{ link.name }}</td>
+                                  <td><a href="/papers/1/links/{{ link.code }}/remove/" class="nav-link" rel="tooltip" title="Remover" data-placement="bottom"><i class="tim-icons icon-trash-simple"></i></a></td>
+
+                                </tr>
+                                {% endif %}
+                              {% endfor %}
+                            {% endif %}
+
+                          </tbody>
+                        </table>
+
+                      </div>
+
 
 
                       <div class="input-group">

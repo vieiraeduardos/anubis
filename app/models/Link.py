@@ -63,7 +63,6 @@ class Link():
                 return False
             else:
                 return True
-
         except Exception as e:
             print(e)
             return False
@@ -73,11 +72,27 @@ class Link():
           with self.connection.cursor() as cursor:
             sql = "UPDATE links SET status = %s WHERE judge=%s AND paper=%s"
             cursor.execute(sql, (1, judge, paper))
-            self.connection.commit()
+            self.connection.fetchall()
 
             return True
         except Exception as e:
             print(e)
             return False
+        finally:
+          self.connection.close()
+
+
+    def getAllLinks(self):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "select judges.name, links.* from judges inner join links where judges.cpf = links.judge"
+            cursor.execute(sql)
+            result = cursor.fetchall()
+
+            return result
+
+        except Exception as e:
+            print(e)
+            return None
         finally:
           self.connection.close()

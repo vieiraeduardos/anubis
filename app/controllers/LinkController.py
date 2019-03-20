@@ -11,7 +11,7 @@ def remove_link(paper, code):
     link = Link()
     link.remove(code)
 
-    return redirect("/papers/" + paper)
+    return redirect("/events/1/")
 
 @app.route("/links/", methods=["POST"])
 def link_judge_to_paper():
@@ -24,7 +24,7 @@ def link_judge_to_paper():
         if(link.alreadyExists()):
             link = Link(judge=judge, paper=paper)
             link.create()
-            return redirect("/")
+            return redirect("/events/1/")
         else:
             error="O avaliador já foi selecionado para avaliar este trabalho!"
     else:

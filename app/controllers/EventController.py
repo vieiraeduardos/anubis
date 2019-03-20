@@ -8,6 +8,8 @@ from app.models.Event import Event
 from app.models.Paper import Paper
 from app.models.Evaluation import Evaluation
 from app.models.Admin import Admin
+from app.models.Link import Link
+
 
 def ordenar(papers):
     for i in range(len(papers)):
@@ -43,5 +45,6 @@ def redirect_event_page(code):
     event = Event().getEventByCode(code)
     papers = Paper().getAllPapers()
     user = Admin().getAdminByEmail(session["email"])
+    links = Link().getAllLinks()
 
-    return render_template("admin-events.html", event=event, papers=papers, user=user)
+    return render_template("admin-events.html", event=event, papers=papers, user=user, links=links)
