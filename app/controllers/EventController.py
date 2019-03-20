@@ -34,7 +34,7 @@ def redirect_processing(code):
         if(note["total"] == None):
             note["total"] = 0
 
-        paper.update({"note": note["total"] })
+        paper.update({"note": round(note["total"], 2) })
 
     papers = ordenar(papers)
 

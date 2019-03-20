@@ -59,7 +59,6 @@ class Evaluation():
 
 
     def update(self):
-        print(self.originality)
         try:
           with self.connection.cursor() as cursor:
             sql = "UPDATE evaluation SET presenter=%s, originality=%s, consistency=%s, clarity=%s, relevance=%s, quality=%s, domain=%s WHERE judge=%s AND paper=%s"

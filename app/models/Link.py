@@ -72,7 +72,7 @@ class Link():
           with self.connection.cursor() as cursor:
             sql = "UPDATE links SET status = %s WHERE judge=%s AND paper=%s"
             cursor.execute(sql, (1, judge, paper))
-            self.connection.fetchall()
+            self.connection.commit()
 
             return True
         except Exception as e:
