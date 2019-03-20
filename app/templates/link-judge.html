@@ -86,17 +86,7 @@
                       </select>
                     </div>
 
-                    <label for="exampleFormControlSelect1">Trabalho</label>
-                    <div class="input-group">
-                      <select name="paper" class="form-control" id="exampleFormControlSelect1" style="color: black; background-color: white;">
-                        {% if papers %}
-                          {% for paper in papers %}
-                            <option value="{{ paper.code }}">{{ paper.title }}</option>
-                          {% endfor %}
-                        {% endif %}
-
-                      </select>
-                    </div>
+                    <input type="hidden" name="paper" value="{{ paper }}">
 
                     <div class="card-footer">
                       <button type="submit" class="btn btn-info btn-round btn-lg">Adicionar</button>

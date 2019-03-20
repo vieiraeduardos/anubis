@@ -37,11 +37,10 @@ def link_judge_to_paper():
     return render_template("link-judge.html", papers=papers, judges=judges, user=user, error=error)
 
 
-@app.route("/links/", methods=["GET"])
-def get_redirect_link():
-    papers = Paper().getAllPapers()
+@app.route("/papers/<paper>/links/", methods=["GET"])
+def get_redirect_link(paper):
     judges = Judge().getAllJudges()
     user = Admin().getAdminByEmail(session["email"])
 
 
-    return render_template("link-judge.html", papers=papers, judges=judges, user=user)
+    return render_template("link-judge.html", paper=paper, judges=judges, user=user)
