@@ -11,6 +11,7 @@ from app.controllers import JudgeController
 from app.controllers import PaperController
 from app.controllers import EvaluationController
 from app.controllers import LinkController
+from app.controllers import StationController
 
 
 from app.models.Judge import Judge

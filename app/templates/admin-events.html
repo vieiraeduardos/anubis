@@ -95,6 +95,17 @@
                       </div>
 
                       <div class="input-group">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <label style="font-weight: bold; font-size: 18px;">Estação: {{ paper.station }}</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label style="font-weight: bold; font-size: 18px;">Horário: {{ paper.time }}</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="input-group">
                         <table class="table">
                           <thead>
                               <tr>
@@ -121,11 +132,10 @@
 
                       </div>
 
-
-
                       <div class="input-group">
                         <a href="/papers/{{ paper.code }}/" class="btn btn-info" rel="tooltip" title="Ver detalhes do trabalho" data-placement="bottom"><i class="tim-icons icon-zoom-split"></i></a>
                         <a href="/papers/{{ paper.code }}/links/" class="btn btn-info" rel="tooltip" title="Adicionar Avaliador" data-placement="bottom"><i class="tim-icons icon-single-02"></i></a>
+                        <a href="/papers/{{ paper.code }}/stations/" class="btn btn-info" rel="tooltip" title="Escolher Estação" data-placement="bottom"><i class="tim-icons icon-tv-2"></i></a>
 
                       </div>
 

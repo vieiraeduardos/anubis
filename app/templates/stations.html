@@ -1,0 +1,121 @@
+{% include "heading.html" %}
+
+<body class="landing-page">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="/" rel="tooltip" title="Designed and Coded by Núcleo de Telessaúde do Maranhão" data-placement="bottom">
+          <span>Anúbis•<Congresso Brasileiro de Telemedicina e Telessaúde/span> Sistema de Avaliação
+        </a>
+        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a>
+                Anúbis•
+              </a>
+            </div>
+            <div class="col-6 collapse-close text-right">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link">Olá, {{ user.name }}!</a>
+          </li>
+          <li class="nav-item">
+            <a href="/logout/" class="nav-link" rel="tooltip" title="Sair da Aplicação" data-placement="bottom"><i class="tim-icons icon-button-power"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="wrapper">
+    <div class="page-header">
+      <img src="{{ url_for('static', filename='assets/img/blob.png') }}" class="path">
+      <img src="{{ url_for('static', filename='assets/img/path2.png') }}" class="path2">
+      <img src="{{ url_for('static', filename='assets/img/triunghiuri.png') }}" class="shapes triangle">
+      <img src="{{ url_for('static', filename='assets/img/waves.png') }}" class="shapes wave">
+      <img src="{{ url_for('static', filename='assets/img/patrat.png') }}" class="shapes squares">
+      <img src="{{ url_for('static', filename='assets/img/cercuri.png') }}" class="shapes circle">
+      <div class="content">
+        <div class="container">
+          <h3>Painel do Administrador - Adicionar Avaliador</h3>
+
+          <div class="row row-grid justify-content-between  text-left">
+
+            <div class="col-lg-12 col-sm-12">
+              <div class="card card-register">
+                <div class="card-header">
+                  <img class="card-img" src="{{ url_for('static', filename='assets/img/square1.png') }}" alt="Card image">
+                  <h4 class="card-title">Escolher estação</h4>
+                </div>
+                <div class="card-body">
+                  <form class="form" action="/papers/{{ paper }}/stations/" method="POST">
+
+                    {% if error %}
+                      <div class="alert alert-danger alert-with-icon">
+                          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                              <i class="tim-icons icon-simple-remove"></i>
+                          </button>
+                          <span data-notify="icon" class="tim-icons icon-alert-circle-exc"></span>
+                          <span><b> Aviso! - </b> {{ error }}</span>
+                      </div>
+                    {% endif %}
+
+                    <label for="exampleFormControlSelect1">Escolha uma estação: </label>
+                    <div class="input-group">
+                      <select name="station" class="form-control" id="exampleFormControlSelect1" style="color: black; background-color: white;">
+                        <option value="1">Estação 1</option>
+                        <option value="2">Estação 2</option>
+                        <option value="3">Estação 3</option>
+
+                      </select>
+                    </div>
+
+                    <label>Escolha um horário: </label>
+                    <div class="input-group">
+                      <select name="time" class="form-control" style="color: black; background-color: white;">
+                        <option value="09:00 - 10:00">09:00 - 10:00</option>
+                        <option value="10:00 - 11:00">10:00 - 11:00</option>
+                        <option value="11:00 - 12:00">11:00 - 12:00</option>
+                        <option value="14:00 - 15:00">14:00 - 15:00</option>
+                        <option value="15:00 - 16:00">15:00 - 16:00</option>
+                        <option value="16:00 - 17:00">16:00 - 17:00</option>
+
+                      </select>
+                    </div>
+
+                    <input type="hidden" name="paper" value="{{ paper }}">
+
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-info btn-round btn-lg">Salvar</button>
+                      <a class="btn btn-warning btn-round btn-lg" href="/">Cancelar</a>
+                    </div>
+
+                  </form>
+                </div>
+              </div> <!-- end .card -->
+
+            </div>
+
+          </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+{% include "footer.html" %}
