@@ -85,6 +85,17 @@
                           </div>
 
                           <div class="input-group">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <label style="font-weight: bold; font-size: 18px;">Estação: {{ paper.station }}</label>
+                              </div>
+                              <div class="col-md-12">
+                                <label style="font-weight: bold; font-size: 18px;">Horário: {{ paper.time }}</label>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="input-group">
                             {% if paper.status == 0 %}
                               <a href="/papers/{{ paper.code }}/evaluations/" class="btn btn-info">Avaliar</i></a>
                             {% endif %}
