@@ -22,6 +22,8 @@ class Link():
           self.connection.close()
 
     def remove(self, code):
+        print("LINKS CODE")
+        print(code)
         try:
           with self.connection.cursor() as cursor:
             sql = "delete from links where code=%s"

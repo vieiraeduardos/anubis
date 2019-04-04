@@ -32,7 +32,7 @@ class Paper():
     def getAllPapers(self):
         try:
           with self.connection.cursor() as cursor:
-            sql = "SELECT  *  FROM  papers order by category, station, time"
+            sql = "SELECT  *  FROM  papers order by station, time"
             cursor.execute(sql)
             result = cursor.fetchall()
 
