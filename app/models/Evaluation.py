@@ -42,6 +42,34 @@ class Evaluation():
         finally:
           self.connection.close()
 
+    def getOriginalityByPaper(self, paper):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "SELECT avg(originality) as originality FROM anubisdb.evaluation where evaluation.paper=%s"
+            cursor.execute(sql, (paper))
+            result = cursor.fetchone()
+
+            return result
+        except Exception as e:
+            print(e)
+            return 0
+        finally:
+          self.connection.close()
+
+    def getRelevanceByPaper(self, paper):
+        try:
+          with self.connection.cursor() as cursor:
+            sql = "SELECT avg(relevance) as relevance FROM anubisdb.evaluation where evaluation.paper=%s"
+            cursor.execute(sql, (paper))
+            result = cursor.fetchone()
+
+            return result
+        except Exception as e:
+            print(e)
+            return 0
+        finally:
+          self.connection.close()
+
     def getEvaluation(self, judge, paper):
         try:
           with self.connection.cursor() as cursor:
