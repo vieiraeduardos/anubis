@@ -1,6 +1,6 @@
 from flask import Flask, render_template, session, redirect
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='')
 
 app.config["SECRET_KEY"] = "@anubis"
 
@@ -12,6 +12,7 @@ from app.controllers import PaperController
 from app.controllers import EvaluationController
 from app.controllers import LinkController
 from app.controllers import StationController
+from app.controllers import PrinterController
 
 
 from app.models.Judge import Judge
