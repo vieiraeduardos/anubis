@@ -13,6 +13,7 @@ from app.controllers import EvaluationController
 from app.controllers import LinkController
 from app.controllers import StationController
 from app.controllers import PrinterController
+from app.controllers import API
 
 
 from app.models.Judge import Judge

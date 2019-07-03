@@ -1,0 +1,4 @@
+Collecting pymysql
+  Using cached https://files.pythonhosted.org/packages/ed/39/15045ae46f2a123019aa968dfcba0396c161c20f855f11dea6796bcaae95/PyMySQL-0.9.3-py2.py3-none-any.whl
+Installing collected packages: pymysql
+Successfully installed pymysql-0.9.3
